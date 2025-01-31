@@ -28,26 +28,18 @@ CREATE TABLE Customers (
 CREATE TABLE Orders (
     order_id INT PRIMARY KEY,
     customer_id INT,
-    Foreign Key (customer_id ) REFERENCES Customers(customer_id),
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
     order_date DATE
 
 )
 
-CREATE TABLE Order_Details (
-    orderdetailid INT PRIMARY KEY,
-    customer_id INT,
-    Foreign Key (customer_id) REFERENCES Customers(customer_id),
-    quantity DOUBLE
-)
-
-DROP TABLE order_details;
 
 CREATE TABLE Order_Details (
     orderdetailid INT PRIMARY KEY,
     order_id INT,
-    Foreign Key (order_id) REFERENCES Orders(order_id),
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id),
     book_id INT,
-    Foreign Key (book_id) REFERENCES Books(book_id)
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
 )
 
 ALTER TABLE Order_Details
